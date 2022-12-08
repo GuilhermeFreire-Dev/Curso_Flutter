@@ -40,7 +40,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
               ElevatedButton(
-                onPressed: openApp,
+                onPressed: () => openApp,
                 child: const Text('SEND'),
               ),
             ],
@@ -59,8 +59,9 @@ class _HomeViewState extends State<HomeView> {
     refresh(null);
   }
 
-  openApp() {
+  openApp() async {
     //
-    launchUrlString("whatsapp://wa.me/55${_controller.text}");
+    launchUrlString("whatsapp://send?phone=55${_controller.text}");
+    clearText();
   }
 }
