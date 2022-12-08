@@ -1,10 +1,7 @@
-import 'dart:html';
-
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/shared/custom_input.dart';
+import 'package:flutter_app/shared/custom_export.dart';
 import 'package:flutter_app/view/cadastro_view.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginView extends StatefulWidget {
@@ -52,14 +49,25 @@ class _LoginViewState extends State<LoginView> {
             CustomInput(
               title: 'Password',
               controller: _passwordController,
+              isPassword: true,
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('login'),
-            )
+            ActionButton(
+              text: 'Login',
+              buttonAction: () => loginFunction,
+            ),
           ],
         ),
       ),
     );
+  }
+
+  loginFunction() {
+    if (_loginController.text == 'admin' &&
+        _passwordController.text == 'admin') {
+      Fluttertoast.showToast(
+          msg: 'Login Success', backgroundColor: Colors.green);
+    } else {
+      Fluttertoast.showToast(msg: 'Login Error', backgroundColor: Colors.red);
+    }
   }
 }

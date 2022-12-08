@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/shared/custom_input.dart';
 
 class CadastroView extends StatefulWidget {
   const CadastroView({super.key});
